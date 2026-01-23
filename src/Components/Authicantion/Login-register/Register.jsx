@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { Authcontext } from '../Auth/Authcontext';
 
 const Register = () => {
-  const { createUser } = useContext(Authcontext);
+  const { createUser, googleSignIn } = useContext(Authcontext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,16 +40,11 @@ const Register = () => {
         }
         formData.append('key', imgbbKey);
 
-        console.log('Photo object:', photo);
-        console.log('ImgBB Key:', imgbbKey);
-        console.log('FormData entries:', [...formData.entries()]);
-
         const response = await axios.post('https://api.imgbb.com/1/upload', formData, {
           timeout: 15000,
         });
         if (response.data.success) {
           photoURL = response.data.data.url;
-          console.log('ImgBB upload successful:', photoURL);
         } else {
           throw new Error(response.data.error?.message || 'Failed to upload image to ImgBB');
         }
@@ -69,10 +64,33 @@ const Register = () => {
       navigate('/');
     } catch (err) {
       setError(err.message || 'Registration failed');
-      console.error('Registration error:', err);
       Swal.fire({
         title: 'Registration Failed',
         text: err.message || 'Unable to create account. Please try again.',
+        icon: 'error',
+        confirmButtonColor: '#D81B60',
+        showConfirmButton: true,
+      });
+    }
+  };
+
+  // Google Sign In Logic (Same as Login Page)
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+      Swal.fire({
+        title: 'Login Successful!',
+        text: 'Welcome to Love Matrimony!',
+        icon: 'success',
+        confirmButtonColor: '#D81B60',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      navigate('/');
+    } catch (err) {
+      Swal.fire({
+        title: 'Google Login Failed',
+        text: err.message || 'Failed to sign in with Google. Please try again.',
         icon: 'error',
         confirmButtonColor: '#D81B60',
         showConfirmButton: true,
@@ -157,6 +175,20 @@ const Register = () => {
             Register
           </motion.button>
         </form>
+
+        {/* Google Sign In Section - Exactly as Login Page */}
+        <div className="mt-6">
+          <p className="text-center text-[#757575] font-lato mb-4">Or sign in with</p>
+          <motion.button
+            type="button"
+            onClick={handleGoogleSignIn}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="w-full py-3 border border-[#E0E0E0] rounded-lg text-[#212121] font-lato font-semibold text-lg transition duration-300 bg-white hover:bg-[#F5F5F5]"
+          >
+            Continue with Google
+          </motion.button>
+        </div>
 
         <p className="text-center mt-6 text-[#212121] font-lato">
           Already have an account?{' '}
