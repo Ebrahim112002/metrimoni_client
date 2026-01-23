@@ -27,25 +27,33 @@ const Dashboard_home = () => {
       if (!user?.email) return;
       try {
         const token = localStorage.getItem('token');
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        };
-
         const [biodatasRes, favoritesRes, requestsRes] = await Promise.all([
-          axios.get(`http://localhost:3000/biodatas?email=${user.email}`, config),
-          axios.get('http://localhost:3000/favourites', config), // API parameter fix
-          axios.get('http://localhost:3000/contact-requests', config), // Endpoint fix
+          axios.get('https://matrimony-server-side-sigma.vercel.app/biodatas', {
+            headers: { Authorization: `Bearer ${token}` },
+            params: { email: user.email },
+          }),
+          axios.get('https://matrimony-server-side-sigma.vercel.app/favourites?email=' + user.email, {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+          axios.get('https://matrimony-server-side-sigma.vercel.app/my-contact-requests', {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
         ]);
 
         setStats({
-          favoritesCount: favoritesRes.data.length || 0,
-          pendingRequests: requestsRes.data.filter(req => req.status === 'pending').length || 0,
+          favoritesCount: favoritesRes.data.length,
+          pendingRequests: requestsRes.data.filter(req => req.status === 'pending').length,
           hasBiodata: biodatasRes.data.length > 0,
         });
         setLoading(false);
       } catch (error) {
         console.error('Error fetching user stats:', error);
-        // সাইলেন্ট এরর হ্যান্ডলিং যাতে ইউজার বিরক্ত না হয়
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Failed to load dashboard stats.',
+          confirmButtonColor: '#D81B60',
+        });
         setLoading(false);
       }
     };
@@ -55,7 +63,7 @@ const Dashboard_home = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-64">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
@@ -67,32 +75,32 @@ const Dashboard_home = () => {
 
   if (user?.role === 'admin') {
     return (
-      <div className="p-4 md:p-6 lg:p-10 w-full overflow-x-hidden">
+      <div className="p-4 md:p-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-[#D81B60] mb-4 font-playfair">
+          <h1 className="text-4xl font-bold text-[#D81B60] mb-4 font-playfair">
             <FaHeart className="inline mr-2" /> Admin Home
           </h1>
-          <p className="text-gray-600 text-base md:text-lg">Manage the matrimonial platform here</p>
+          <p className="text-gray-600 text-lg">Manage the matrimonial platform here</p>
         </motion.div>
 
-        {/* Quick Links - Admin Specific (Responsive Grid) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {/* Quick Links - Admin Specific */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-white p-5 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <Link to="/dashboard/manage-users">
               <FaUsers className="text-3xl text-[#D81B60] mb-4" />
               <h2 className="text-xl font-semibold text-gray-800 mb-2">Manage Users</h2>
-              <p className="text-gray-600 text-sm">View and manage user accounts</p>
+              <p className="text-gray-600">View and manage user accounts</p>
             </Link>
           </motion.div>
 
@@ -100,13 +108,13 @@ const Dashboard_home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white p-5 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <Link to="/dashboard/manage-biodatas">
               <FaFileAlt className="text-3xl text-[#D81B60] mb-4" />
               <h2 className="text-xl font-semibold text-gray-800 mb-2">Manage Biodatas</h2>
-              <p className="text-gray-600 text-sm">Review and manage biodata submissions</p>
+              <p className="text-gray-600">Review and manage biodata submissions</p>
             </Link>
           </motion.div>
 
@@ -114,13 +122,13 @@ const Dashboard_home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-white p-5 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <Link to="/dashboard/approve-premium">
               <FaCrown className="text-3xl text-[#D81B60] mb-4" />
               <h2 className="text-xl font-semibold text-gray-800 mb-2">Approve Premium</h2>
-              <p className="text-gray-600 text-sm">Handle premium subscription approvals</p>
+              <p className="text-gray-600">Handle premium subscription approvals</p>
             </Link>
           </motion.div>
 
@@ -128,13 +136,13 @@ const Dashboard_home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white p-5 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <Link to="/dashboard/approve-contact-requests">
               <FaCheckCircle className="text-3xl text-[#D81B60] mb-4" />
               <h2 className="text-xl font-semibold text-gray-800 mb-2">Approve Contact Requests</h2>
-              <p className="text-gray-600 text-sm">Review and approve contact requests</p>
+              <p className="text-gray-600">Review and approve contact requests</p>
             </Link>
           </motion.div>
 
@@ -142,13 +150,13 @@ const Dashboard_home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="bg-white p-5 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <Link to="/dashboard/manage-payments">
               <FaCreditCard className="text-3xl text-[#D81B60] mb-4" />
               <h2 className="text-xl font-semibold text-gray-800 mb-2">Manage Payments</h2>
-              <p className="text-gray-600 text-sm">Track and manage payment transactions</p>
+              <p className="text-gray-600">Track and manage payment transactions</p>
             </Link>
           </motion.div>
         </div>
@@ -157,26 +165,26 @@ const Dashboard_home = () => {
   }
 
   return (
-    <div className="p-4 md:p-6 lg:p-10 w-full overflow-x-hidden">
+    <div className="p-4 md:p-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="text-center mb-8"
       >
-        <h1 className="text-3xl md:text-4xl font-bold text-[#D81B60] mb-4 font-playfair">
-          <FaHeart className="inline mr-2" /> Welcome, {user?.displayName}!
+        <h1 className="text-4xl font-bold text-[#D81B60] mb-4 font-playfair">
+          <FaHeart className="inline mr-2" /> Welcome to Your Dashboard
         </h1>
-        <p className="text-gray-600 text-base md:text-lg">Manage your matrimonial journey here</p>
+        <p className="text-gray-600 text-lg">Manage your matrimonial journey here</p>
       </motion.div>
 
-      {/* Quick Stats - User Specific (Responsive Grid) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8">
+      {/* Quick Stats - User Specific */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white p-5 md:p-6 rounded-xl shadow-lg border-l-4 border-[#D81B60]"
+          className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-[#D81B60]"
         >
           <FaStar className="text-2xl text-[#D81B60] mb-2" />
           <h3 className="text-sm font-medium text-gray-600">Favourites</h3>
@@ -187,7 +195,7 @@ const Dashboard_home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white p-5 md:p-6 rounded-xl shadow-lg border-l-4 border-yellow-500"
+          className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500"
         >
           <FaEnvelope className="text-2xl text-yellow-500 mb-2" />
           <h3 className="text-sm font-medium text-gray-600">Pending Requests</h3>
@@ -198,7 +206,7 @@ const Dashboard_home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="bg-white p-5 md:p-6 rounded-xl shadow-lg border-l-4 border-green-500"
+          className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500"
         >
           <FaUser className="text-2xl text-green-500 mb-2" />
           <h3 className="text-sm font-medium text-gray-600">Biodata Status</h3>
@@ -208,13 +216,13 @@ const Dashboard_home = () => {
         </motion.div>
       </div>
 
-      {/* Quick Links - User Specific (Responsive Grid) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      {/* Quick Links - User Specific */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-white p-5 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+          className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
           whileHover={{ scale: 1.02 }}
         >
           <Link to={stats.hasBiodata ? '/dashboard/edit-biodata' : '/dashboard/create-biodata'}>
@@ -222,7 +230,7 @@ const Dashboard_home = () => {
             <h2 className="text-xl font-semibold text-gray-800 mb-2">
               {stats.hasBiodata ? 'Edit Biodata' : 'Create Biodata'}
             </h2>
-            <p className="text-gray-600 text-sm">Update or create your personal information</p>
+            <p className="text-gray-600">Update or create your personal information</p>
           </Link>
         </motion.div>
 
@@ -230,13 +238,13 @@ const Dashboard_home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="bg-white p-5 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+          className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
           whileHover={{ scale: 1.02 }}
         >
           <Link to="/dashboard/view-biodata">
             <FaUser className="text-3xl text-[#D81B60] mb-4" />
             <h2 className="text-xl font-semibold text-gray-800 mb-2">View Biodata</h2>
-            <p className="text-gray-600 text-sm">See your biodata details</p>
+            <p className="text-gray-600">See your biodata details</p>
           </Link>
         </motion.div>
 
@@ -244,13 +252,13 @@ const Dashboard_home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="bg-white p-5 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+          className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
           whileHover={{ scale: 1.02 }}
         >
           <Link to="/dashboard/contact-requests">
             <FaEnvelope className="text-3xl text-[#D81B60] mb-4" />
             <h2 className="text-xl font-semibold text-gray-800 mb-2">Contact Requests</h2>
-            <p className="text-gray-600 text-sm">Manage your contact requests</p>
+            <p className="text-gray-600">Manage your contact requests</p>
           </Link>
         </motion.div>
 
@@ -258,13 +266,13 @@ const Dashboard_home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
-          className="bg-white p-5 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+          className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
           whileHover={{ scale: 1.02 }}
         >
           <Link to="/dashboard/favorites">
             <FaStar className="text-3xl text-[#D81B60] mb-4" />
             <h2 className="text-xl font-semibold text-gray-800 mb-2">My Favourites</h2>
-            <p className="text-gray-600 text-sm">View your favorite biodatas ({stats.favoritesCount})</p>
+            <p className="text-gray-600">View your favorite biodatas ({stats.favoritesCount})</p>
           </Link>
         </motion.div>
       </div>
