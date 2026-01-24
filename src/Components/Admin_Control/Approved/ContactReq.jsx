@@ -17,21 +17,20 @@ const ContactReq = () => {
       try {
         setLoading(true);
         setError(null);
-        console.log('User token:', user?.accessToken); // Debug token
-        // Fetch user data to check premium and admin status
+        console.log('User token:', user?.accessToken); 
         const userResponse = await axios.get(`http://localhost:3000/users/${user.email}`, {
           headers: { Authorization: `Bearer ${user.accessToken}` },
         });
-        console.log('User response:', userResponse.data); // Debug response
+        console.log('User response:', userResponse.data); 
         const fetchedIsPremium = userResponse.data.isPremium || false;
         const fetchedIsAdmin = userResponse.data.role === 'admin';
         setIsPremium(fetchedIsPremium);
         setIsAdmin(fetchedIsAdmin);
 
-        // Clear previous error if any
+        
         setError(null);
 
-        // Fetch contact requests based on user role
+        
         let response;
         if (fetchedIsAdmin) {
           response = await axios.get('http://localhost:3000/contact-requests?status=pending', {
