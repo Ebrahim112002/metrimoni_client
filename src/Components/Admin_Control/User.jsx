@@ -12,9 +12,9 @@ const User = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
-  // Fetch all users and check if current user is admin
+  
   useEffect(() => {
-    // If auth is still loading or user is null, wait
+    
     if (authLoading || !user || !user.email) {
       if (!authLoading && !user) {
         // Redirect to login if user is not authenticated

@@ -16,13 +16,13 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Create new user
+ 
   const createUser = async (email, password, name = 'Unnamed User', photoURL = '') => {
     try {
       const { user: newUser } = await createUserWithEmailAndPassword(auth, email, password);
       const idToken = await newUser.getIdToken();
 
-      // Send to backend, backend should handle default role as 'user'
+      
       await axios.post(
         'http://localhost:3000/users',
         {
@@ -43,13 +43,13 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // Sign in existing user
+  
   const signIn = async (email, password) => {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
       const idToken = await user.getIdToken();
 
-      // Try to create user in backend if not exists
+      
       try {
         await axios.post(
           'http://localhost:3000/users',
