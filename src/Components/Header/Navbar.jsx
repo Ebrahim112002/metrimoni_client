@@ -42,7 +42,7 @@ const Navbar = () => {
     { name: 'Biodatas', path: '/all-biodatas' },
     { name: 'About Us', path: '/about' },
     { name: 'Contact Us', path: '/contact' },
-    { name: 'Chat', path: '/chat' },
+    { name: 'Ai-assistant', path: '/chat' },
     ...(user ? [{ name: 'Dashboard', path: '/dashboard' }] : []),
   ];
 
