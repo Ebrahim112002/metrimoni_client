@@ -100,7 +100,6 @@ const UserReqSend = ({ biodataId, biodata }) => {
     }
   }, [user, biodataId]);
 
-  // Handle send contact request
   const handleSendRequest = async () => {
     console.log('handleSendRequest called');
     console.log('Current isPremium:', isPremium);
