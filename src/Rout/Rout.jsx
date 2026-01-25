@@ -28,6 +28,7 @@ import ContactReq from "../Components/Admin_Control/Approved/ContactReq";
 import ManagePayments from "../Components/Admin_Control/Manage_payments/Manage_payments";
 import UserReqSend from "../Components/Normal_user/Checkout/UserReqSend";
 import ErrorPage from "../Components/Error/ErrorPage";
+import Chats from "../Components/Chats/Chats";
 
 
 export const router = createBrowserRouter([
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
     {
       path:'/login',
       Component:Login,
+    },
+    {
+      path:'/chat',
+      element:<Chats></Chats>
     }
    ]
   },
