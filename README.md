@@ -74,10 +74,10 @@ System Architecture Overview:
 c:\Users\LENOVO\Downloads\deepseek_mermaid_20260210_45dede.png
 
 Data Flow Architecture:
-![alt text](../matri-mony-client-side/src/assets/deepseek_mermaid_20260210_66653e.png)
+![alt text](deepseek_mermaid_20260210_66653e.png)
 
 Component Hierarchy & State Flow
-![alt text](../matri-mony-client-side/src/assets/deepseek_mermaid_20260210_daa075.png)
+![alt text](deepseek_mermaid_20260210_daa075.png)
 
 📁 Project Structure:
 client/
@@ -159,7 +159,7 @@ client/
 └── README.md
 
 🔐 Authentication Flow
-![alt text](../matri-mony-client-side/src/assets/authentication.png)
+![alt text](authentication.png)
 
 Key Authentication Features:
 Firebase Authentication with email/password
@@ -173,4 +173,4 @@ Role-based access control (User/Admin)
 Session persistence across page reloads
 
 State Flow Diagram:
-![alt text](../matri-mony-client-side/src/assets/Stateflow.png)
+![alt text](Stateflow.png)
