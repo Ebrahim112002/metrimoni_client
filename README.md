@@ -71,13 +71,13 @@ Accessibility compliant (WCAG 2.1)
 
 🏗️ System Architecture
 System Architecture Overview:
-![alt text](systemarchitecture.png)
+![alt text](https://i.ibb.co.com/gZtcHrNg/systemarchitecture.png)
 
 Data Flow Architecture:
-![alt text](deepseek_mermaid_20260210_66653e.png)
+![alt text](https://i.ibb.co.com/hRxKmYJm/deepseek-mermaid-20260210-66653e.png)
 
 Component Hierarchy & State Flow
-![alt text](deepseek_mermaid_20260210_daa075.png)
+![alt text](https://i.ibb.co.com/Dd0JbyC/deepseek-mermaid-20260210-daa075.png)
 
 📁 Project Structure:
 client/
@@ -159,7 +159,7 @@ client/
 └── README.md
 
 🔐 Authentication Flow
-![alt text](authentication.png)
+![alt text](https://i.ibb.co.com/1GpTJdBs/authentication.png)
 
 Key Authentication Features:
 Firebase Authentication with email/password
@@ -173,11 +173,11 @@ Role-based access control (User/Admin)
 Session persistence across page reloads
 
 State Flow Diagram:
-![alt text](Stateflow.png)
+![alt text](https://i.ibb.co.com/6cb9Q34M/Stateflow.png)
 
 AI Chatbot Integration
 Chatbot Architecture
-![alt text](chatbot.png)
+![alt text](https://i.ibb.co.com/prncfrsx/chatbot.png)
 
 Key Chatbot Features:
 
@@ -190,3 +190,93 @@ Profile completion recommendations
  API Integration
 Frontend-Backend Communication Architecture
 ![alt text](https://i.ibb.co.com/0Vh0zJdt/api.png)
+
+
+Request/Response Lifecycle
+![alt text](https://i.ibb.co.com/Z16YNdcz/lifecycle.png)
+
+ Installation & Setup
+Prerequisites
+Node.js (v16 or higher)
+
+npm or yarn
+
+Firebase account for authentication
+
+Backend API server running
+
+Step 1: Clone the Repository
+bash
+git clone https://github.com/Ebrahim112002/metrimoni_client.git
+cd client
+Step 2: Install Dependencies
+bash
+npm install
+# or
+yarn install
+Step 3: Configure Environment Variables
+Create a .env file in the root directory based on .env.example:
+
+bash
+cp .env.example .env
+Step 4: Run Development Server
+bash
+npm run dev
+# or
+yarn dev
+The application will be available at http://localhost:5173
+
+⚙️ Environment Variables
+Create a .env file in the root directory:
+
+env
+# Firebase Configuration
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_bucket.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+
+# Backend API
+VITE_API_URL=http://localhost:5000/api
+# or for production:
+# VITE_API_URL=https://your-backend-api.com/api
+
+# ImgBB for Image Uploads (Optional)
+VITE_IMGBB_KEY=your_imgbb_api_key
+
+# AI Service (Optional)
+VITE_AI_SERVICE_URL=https://ai-service.com/api
+VITE_AI_API_KEY=your_ai_service_key
+📦 Scripts
+Command	Description
+npm run dev	Start development server
+npm run build	Build for production
+npm run preview	Preview production build
+npm run lint	Run ESLint
+npm run format	Format code with Prettier
+🧪 Testing
+bash
+# Run unit tests
+npm test
+
+# Run tests with coverage
+npm test -- --coverage
+
+# Run end-to-end tests
+npm run test:e2e
+📱 Browser Support
+Browser	Version	Support
+Chrome	60+	✅ Full
+Firefox	55+	✅ Full
+Safari	12+	✅ Full
+Edge	79+	✅ Full
+Opera	50+	✅ Full
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+👨‍💻 Author
+Md Ebrahim (Aka Mondal Tithi)
+MERN Stack Developer
+
