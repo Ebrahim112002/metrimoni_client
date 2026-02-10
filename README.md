@@ -192,7 +192,7 @@ Frontend-Backend Communication Architecture
 ![alt text](https://i.ibb.co.com/0Vh0zJdt/api.png)
 
 # Request/Response Lifecycle:
-(https://i.ibb.co.com/Z16YNdcz/lifecycle.png)
+![alt text](https://i.ibb.co.com/Z16YNdcz/lifecycle.png)
 
  Installation & Setup
 Prerequisites
@@ -267,11 +267,17 @@ npm test -- --coverage
 npm run test:e2e
 Browser Support
 Browser	Version	Support
+
 Chrome	60+	✅ Full
+
 Firefox	55+	✅ Full
+
 Safari	12+	✅ Full
+
 Edge	79+	✅ Full
+
 Opera	50+	✅ Full
+
 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
