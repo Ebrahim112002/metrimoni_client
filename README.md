@@ -71,7 +71,7 @@ Accessibility compliant (WCAG 2.1)
 
 🏗️ System Architecture
 System Architecture Overview:
-c:\Users\LENOVO\Downloads\deepseek_mermaid_20260210_45dede.png
+![alt text](systemarchitecture.png)
 
 Data Flow Architecture:
 ![alt text](deepseek_mermaid_20260210_66653e.png)
@@ -174,3 +174,19 @@ Session persistence across page reloads
 
 State Flow Diagram:
 ![alt text](Stateflow.png)
+
+AI Chatbot Integration
+Chatbot Architecture
+![alt text](chatbot.png)
+
+Key Chatbot Features:
+
+Profile match suggestions based on preferences
+
+Conversation icebreakers generator
+
+Profile completion recommendations
+
+ API Integration
+Frontend-Backend Communication Architecture
+![alt text](https://i.ibb.co.com/0Vh0zJdt/api.png)
