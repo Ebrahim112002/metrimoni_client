@@ -1,140 +1,74 @@
-# Matrimony Platform – Frontend
+Matrimony Platform – Frontend
 
-A modern Matrimony web application frontend built with React and Tailwind CSS.  
-Users can create biodata, browse profiles, request contacts, and access dashboards based on roles.
+A modern, responsive Matrimony web application built with React.js and Tailwind CSS. This platform facilitates matrimonial connections with role-based dashboards, biodata management, and AI-powered matchmaking features.
 
-This frontend communicates with a REST API backend and supports authentication and role-based routing.
+🌐 Live Demo
+Live Site: https://metrimoniyal.netlify.app/
 
----
+📑 Table of Contents
+✨ Core Features
 
-## Overview
+🏗️ System Architecture
 
-This frontend provides:
+📁 Project Structure
 
-- Public Matrimony Pages  
-- User Dashboard  
-- Admin Dashboard  
-- Biodata Management  
-- Premium Membership UI  
-- Responsive Design  
+🔐 Authentication Flow
 
----
+🔄 State Management
 
-##  Features
+🤖 AI Chatbot Integration
 
-- Firebase Authentication
-- Role Based Routing
-- Biodata Create / Update
-- Profile Filtering
-- Premium Membership UI
-- Admin Dashboard UI
-- Contact Request System
-- Axios Protected API Calls
-- Fully Responsive Layout
+🔌 API Integration
 
----
+🚀 Installation & Setup
 
-## 🧑‍💻 Tech Stack
+⚙️ Environment Variables
 
-- React
-- Tailwind CSS
-- Firebase Authentication
-- Axios
-- React Router DOM
-- TanStack Query
+📦 Scripts
 
----
+👨‍💻 Author
 
-## 📁 Project Structure
+✨ Core Features
+🎯 User Features
+Biodata Management: Create, update, and manage detailed matrimonial profiles
 
-client/
-│
-├── public/
-│
-├── src/
-│ ├── assets/
-│
-│ ├── Components/
-│ │ ├── AboutUs/
-│ │ ├── Admin_Control/
-│ │ ├── Certificates/
-│ │ ├── PremiumRequest/
-│ │ ├── Manage Biodata/
-│ │ ├── ManagePayments/
-│ │ ├── ManageApplicants/
-│ │ ├── Authentication/
-│ │ ├── Banner/
-│ │ ├── Footer/
-│ │ ├── Navbar/
-│ │ └── Success_counter.js
-│
-│ ├── Pages/
-│ │ ├── Charts/
-│ │ ├── Class/
-│ │ ├── Contact/
-│ │ ├── Home/
-│ │ ├── Dashboard/
-│ │ │ ├── DashboardHome.jsx
-│ │ │ └── Dashboard.jsx
-│ │ ├── Login.jsx
-│ │ ├── Register.jsx
-│ │ └── Error.jsx
-│
-│ ├── Routes/
-│ │ ├── PrivateRoute.jsx
-│
-│ ├── Hooks/
-│ │ ├── useAdmin.jsx
-│
-│ ├── Provider/
-│ │ ├── AuthProvider.jsx
-│
-│ ├── App.jsx
-│ ├── main.jsx
-│ └── index.css
-│
-├── .env
-├── package.json
-└── README.md
+Smart Matching: AI-powered profile matching with advanced filters
 
----
-##  Installation
+Contact Requests: Secure contact exchange system with privacy controls
 
-### Clone Project
+Premium Membership: Tiered subscription plans with enhanced features
 
-git clone https://github.com/Ebrahim112002/metrimoni_client.git
+Favorites System: Bookmark and track interesting profiles
 
-cd client
-### Install Dependencies
+👑 Admin Features
+Dashboard Analytics: Visual statistics and platform insights
 
-npm install
+User Management: Approve, suspend, or delete user accounts
 
+Biodata Moderation: Review and verify submitted biodatas
 
----
+Payment Management: Monitor premium subscription transactions
 
-## ▶️ Run Frontend
+Content Management: Manage platform content and announcements
 
-npm run dev
+🤖 AI Assistant
+Smart Matchmaking: AI suggests compatible profiles based on preferences
 
+Profile Optimization: Recommendations for improving biodata visibility
 
-Runs on:
+Conversation Starter: AI-generated icebreakers for initial contact
 
-http://localhost:5173
+Personalized Tips: Custom advice based on user behavior and preferences
 
+📱 Responsive Design
+Mobile-first responsive layout
 
----
+Cross-browser compatibility
 
-## 🔐 Environment Variables
+Dark/Light mode support
 
-Create `.env` file:
-<!-- VITE_IMGBB_KEY=e3b56dd282a303dc90a139005ef799f5 -->
+Accessibility compliant (WCAG 2.1)
 
-##  Live Site
-https://metrimoniyal.netlify.app/
-
-## Author
-
-Md Ebrahim , Aka mondal tithi  
-MERN Stack Developer  
-
----
+🏗️ System Architecture
+System Architecture Overview
+![alt text](image.png)
