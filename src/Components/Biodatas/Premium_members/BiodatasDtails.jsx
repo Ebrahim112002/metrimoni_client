@@ -591,9 +591,9 @@ const BiodatasDetails = () => {
                       <h4 className="text-xl font-semibold text-[#212121] truncate font-playfair">
                         {profile.name}
                       </h4>
-                      <p className="text-sm text-[#D81B60] mt-2 font-lato">
+                      {/* <p className="text-sm text-[#D81B60] mt-2 font-lato">
                         Biodata ID: {profile._id.slice(-6)}
-                      </p>
+                      </p> */}
                       <p className="text-sm text-[#212121] mt-1 font-lato">
                         Age: {profile.age}
                       </p>

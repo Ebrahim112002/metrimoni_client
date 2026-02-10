@@ -119,7 +119,7 @@ const ViewBiodata = () => {
             { label: 'Expected Partner Weight', value: biodata.partnerWeight ? `${biodata.partnerWeight} kg` : 'Not specified' },
             { label: 'Contact Email', value: biodata.contactEmail },
             { label: 'Mobile Number', value: biodata.mobileNumber },
-            { label: 'Biodata ID', value: biodata._id },
+            // { label: 'Biodata ID', value: biodata._id },
           ].map((field, index) => (
             <motion.div
               key={field.label}

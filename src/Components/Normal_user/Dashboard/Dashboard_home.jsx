@@ -28,14 +28,14 @@ const Dashboard_home = () => {
       try {
         const token = localStorage.getItem('token');
         const [biodatasRes, favoritesRes, requestsRes] = await Promise.all([
-          axios.get('https://matrimony-server-side-sigma.vercel.app/biodatas', {
+          axios.get('http://localhost:3000/biodatas', {
             headers: { Authorization: `Bearer ${token}` },
             params: { email: user.email },
           }),
-          axios.get('https://matrimony-server-side-sigma.vercel.app/favourites?email=' + user.email, {
+          axios.get('http://localhost:3000/favourites?email=' + user.email, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get('https://matrimony-server-side-sigma.vercel.app/my-contact-requests', {
+          axios.get('http://localhost:3000/my-contact-requests', {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
