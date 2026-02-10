@@ -70,5 +70,107 @@ Dark/Light mode support
 Accessibility compliant (WCAG 2.1)
 
 🏗️ System Architecture
-System Architecture Overview
-![alt text](image.png)
+System Architecture Overview:
+c:\Users\LENOVO\Downloads\deepseek_mermaid_20260210_45dede.png
+
+Data Flow Architecture:
+![alt text](deepseek_mermaid_20260210_66653e.png)
+
+Component Hierarchy & State Flow
+![alt text](deepseek_mermaid_20260210_daa075.png)
+
+📁 Project Structure:
+client/
+├── src/
+│   ├── assets/                 # Static assets (images, icons)
+│   │   ├── images/
+│   │   └── icons/
+│   │
+│   ├── components/             # Reusable UI components
+│   │   ├── AboutUs/           # About page components
+│   │   ├── Admin_Control/     # Admin dashboard components
+│   │   │   ├── DashboardStats.jsx
+│   │   │   ├── UserManagement.jsx
+│   │   │   └── ContentModeration.jsx
+│   │   ├── Authentication/    # Auth-related components
+│   │   ├── Biodata/           # Biodata management components
+│   │   │   ├── BiodataForm.jsx
+│   │   │   ├── BiodataView.jsx
+│   │   │   └── BiodataFilters.jsx
+│   │   ├── Chatbot/           # AI Chatbot components
+│   │   │   ├── ChatInterface.jsx
+│   │   │   ├── MessageBubble.jsx
+│   │   │   └── SuggestionsPanel.jsx
+│   │   ├── Premium/           # Premium features
+│   │   ├── UI/                # Generic UI components
+│   │   │   ├── Button.jsx
+│   │   │   ├── Modal.jsx
+│   │   │   └── LoadingSpinner.jsx
+│   │   └── Layout/            # Layout components
+│   │       ├── Navbar.jsx
+│   │       ├── Footer.jsx
+│   │       └── Sidebar.jsx
+│   │
+│   ├── context/               # React Context providers
+│   │   ├── AuthContext.jsx
+│   │   ├── ThemeContext.jsx
+│   │   └── ChatbotContext.jsx
+│   │
+│   ├── hooks/                 # Custom React hooks
+│   │   ├── useAuth.js
+│   │   ├── useAdmin.js
+│   │   ├── useAxiosSecure.js
+│   │   ├── useBiodata.js
+│   │   └── useChatbot.js
+│   │
+│   ├── pages/                 # Page components
+│   │   ├── Home/
+│   │   ├── Dashboard/
+│   │   │   ├── UserDashboard.jsx
+│   │   │   └── AdminDashboard.jsx
+│   │   ├── Auth/
+│   │   ├── Browse/
+│   │   └── Profile/
+│   │
+│   ├── services/              # API and external services
+│   │   ├── api.js            # Axios configuration
+│   │   ├── auth.js           # Firebase auth service
+│   │   ├── biodata.js        # Biodata API calls
+│   │   └── chatbot.js        # AI service integration
+│   │
+│   ├── utils/                 # Utility functions
+│   │   ├── validators.js
+│   │   ├── formatters.js
+│   │   └── constants.js
+│   │
+│   ├── routes/                # Routing configuration
+│   │   ├── PrivateRoute.jsx
+│   │   ├── AdminRoute.jsx
+│   │   └── routes.js
+│   │
+│   ├── App.jsx               # Root component
+│   ├── main.jsx              # Entry point
+│   └── index.css             # Global styles
+│
+├── public/                   # Static public files
+├── .env                      # Environment variables
+├── .env.example             # Environment template
+├── package.json
+└── README.md
+
+🔐 Authentication Flow
+![alt text](authentication.png)
+
+Key Authentication Features:
+Firebase Authentication with email/password
+
+JWT token management for API authorization
+
+Automatic token refresh mechanism
+
+Role-based access control (User/Admin)
+
+Session persistence across page reloads
+
+State Flow Diagram:
+![alt text](Stateflow.png)
