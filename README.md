@@ -191,9 +191,8 @@ Profile completion recommendations
 Frontend-Backend Communication Architecture
 ![alt text](https://i.ibb.co.com/0Vh0zJdt/api.png)
 
-
-Request/Response Lifecycle
-![alt text](https://i.ibb.co.com/Z16YNdcz/lifecycle.png)
+# Request/Response Lifecycle:
+(https://i.ibb.co.com/Z16YNdcz/lifecycle.png)
 
  Installation & Setup
 Prerequisites
@@ -266,7 +265,7 @@ npm test -- --coverage
 
 # Run end-to-end tests
 npm run test:e2e
-📱 Browser Support
+Browser Support
 Browser	Version	Support
 Chrome	60+	✅ Full
 Firefox	55+	✅ Full
@@ -277,6 +276,8 @@ Opera	50+	✅ Full
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 👨‍💻 Author
-Md Ebrahim (Aka Mondal Tithi)
+
+Md Ebrahim Aka Mondal Tithi
+
 MERN Stack Developer
 
